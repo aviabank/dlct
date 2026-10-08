@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>$DLCT — Trade Finance Use Cases</title>
+<link rel="icon" href="dlct_logo.png" />
+<link rel="stylesheet" href="ai-agent.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: radial-gradient(ellipse at top, #0F1F15 0%, #0A0E27 50%, #060920 100%); color: #E0E6FF; line-height: 1.6; padding-top: 80px; padding-bottom: 60px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(10,14,39,0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(46,204,64,0.25); padding: 10px 0; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.logo { display: flex; align-items: center; gap: 8px; }
+.logo img { height: 36px; width: auto; border-radius: 50%; box-shadow: 0 0 15px rgba(46,204,64,0.5); }
+.logo-text { font-size: 20px; font-weight: 700; color: #fff; }
+nav { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+nav a { color: #8A94C8; text-decoration: none; font-size: 12px; font-weight: 500; transition: 0.3s; }
+nav a:hover { color: #2ECC40; }
+nav a.active { color: #2ECC40; border-bottom: 2px solid #2ECC40; }
+.btn-primary { background: linear-gradient(135deg, #2ECC40 0%, #4ADE5C 100%); color: #0A0E27; padding: 8px 18px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 13px; box-shadow: 0 4px 15px rgba(46,204,64,0.4); }
+.btn-primary:hover { transform: translateY(-2px); }
+section { padding: 30px 0; }
+.section-header { text-align: center; margin-bottom: 30px; }
+.section-tag { display: inline-block; background: rgba(46,204,64,0.12); color: #2ECC40; padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(46,204,64,0.2); }
+.section-header h1 { font-size: 36px; font-weight: 700; margin: 8px 0; }
+.section-header h1 .highlight { color: #2ECC40; }
+.section-header p { color: #8A94C8; max-width: 600px; margin: 0 auto; }
+.categories { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 24px; }
+.cat-btn { background: rgba(26,30,65,0.5); border: 1px solid rgba(46,204,64,0.2); color: #8A94C8; padding: 8px 20px; border-radius: 30px; font-size: 13px; cursor: pointer; transition: 0.3s; }
+.cat-btn.active, .cat-btn:hover { background: #2ECC40; color: #0A0E27; border-color: #2ECC40; box-shadow: 0 0 20px rgba(46,204,64,0.4); }
+.fintech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 30px; }
+.fintech-card { background: linear-gradient(160deg, rgba(26,30,65,0.5), rgba(15,31,21,0.5)); border: 1px solid rgba(46,204,64,0.15); border-radius: 14px; padding: 18px; transition: 0.3s; }
+.fintech-card:hover { border-color: #2ECC40; background: rgba(46,204,64,0.08); transform: translateY(-3px); }
+.fintech-card .fc-icon { font-size: 26px; filter: drop-shadow(0 0 10px rgba(46,204,64,0.6)); }
+.fintech-card .fc-title { font-size: 14px; font-weight: 600; color: #fff; margin-top: 6px; }
+.fintech-card .fc-cat { font-size: 10px; text-transform: uppercase; color: #5A649A; letter-spacing: 0.5px; margin-top: 4px; }
+.contract-box { background: rgba(46,204,64,0.05); border: 1px solid rgba(46,204,64,0.2); border-radius: 12px; padding: 14px; margin: 20px 0; text-align: center; font-size: 13px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.contract-box .addr { color: #2ECC40; }
+.contract-box .copy-btn { background: transparent; border: none; color: #5A649A; cursor: pointer; font-size: 13px; }
+.contract-box .copy-btn:hover { color: #2ECC40; }
+.contract-box .solscan-link { color: #5A649A; text-decoration: none; font-size: 13px; margin-left: 8px; }
+.contract-box .solscan-link:hover { color: #fff; }
+.counter-box { text-align: center; padding: 16px; background: rgba(46,204,64,0.05); border-radius: 12px; margin: 20px 0; font-size: 14px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.counter-box .counter-visitors { color: #2ECC40; font-weight: 600; }
+.counter-box .counter-clients { color: #4ADE5C; font-weight: 600; }
+.back-link { display: inline-block; margin-top: 16px; color: #2ECC40; text-decoration: none; font-weight: 500; }
+footer { background: linear-gradient(180deg, #060920, #030510); padding: 20px 0; text-align: center; border-top: 1px solid rgba(46,204,64,0.2); margin-top: 20px; }
+footer p { color: #3A406A; font-size: 13px; }
+@media (max-width: 768px) { .section-header h1 { font-size: 26px; } .fintech-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .fintech-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="container header-inner">
+    <div class="logo"><img src="dlct_logo.png" alt="$DLCT" /><span class="logo-text">DLCT $DLCT</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="fintech1.html" class="active">Use Cases</a>
+      <a href="fintech2.html">Trade Flow</a>
+      <a href="trade.html">Trade</a>
+      <a href="ecosystem.html">Ecosystem</a>
+    </nav>
+    <a href="buy.html" class="btn-primary">Buy $DLCT</a>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Fintech</span>
+      <h1>Trade Finance <span class="highlight">Use Cases</span></h1>
+      <p>From aircraft exports to parts imports — $DLCT powers cross-border trade.</p>
+    </div>
+    <div class="categories">
+      <button class="cat-btn active" data-cat="all">All</button>
+      <button class="cat-btn" data-cat="aviation">Aviation</button>
+      <button class="cat-btn" data-cat="trade">Trade Finance</button>
+      <button class="cat-btn" data-cat="docs">Documents</button>
+      <button class="cat-btn" data-cat="payments">Payments</button>
+      <button class="cat-btn" data-cat="compliance">Compliance</button>
+    </div>
+    <div class="fintech-grid" id="fintechGrid"></div>
+    <div class="counter-box">
+      📜 Visitors: <span class="counter-visitors">2,030</span>
+      &nbsp;·&nbsp;
+      🤝 Clients: <span class="counter-clients">0</span>
+    </div>
+    <div class="contract-box">
+      📜 Contract: <span class="addr">AG6J7LmE5TaDyf1Nb41GC7VrCfsNaRbPjPvuocmk9Y65</span>
+      <button onclick="navigator.clipboard.writeText('AG6J7LmE5TaDyf1Nb41GC7VrCfsNaRbPjPvuocmk9Y65')" class="copy-btn">📋 Copy</button>
+      <a href="https://solscan.io/token/AG6J7LmE5TaDyf1Nb41GC7VrCfsNaRbPjPvuocmk9Y65" target="_blank" class="solscan-link">🔍 Solscan</a>
+    </div>
+    <a href="index.html" class="back-link">← Back to $DLCT Home</a>
+  </div>
+</section>
+
+<footer><div class="container"><p>© 2026 AviaTrust. Built on Solana. | $DLCT</p></div></footer>
+
+<script>
+const ideas = [
+  { icon: '✈️', title: 'Aircraft export DLC', cat: 'aviation' },
+  { icon: '🔧', title: 'Aviation parts import DLC', cat: 'aviation' },
+  { icon: '🚢', title: 'Cross-border delivery DLC', cat: 'aviation' },
+  { icon: '💺', title: 'Aircraft sale contract', cat: 'aviation' },
+  { icon: '📋', title: 'Bill of Lading on-chain', cat: 'docs' },
+  { icon: '🛡️', title: 'Insurance certificate', cat: 'docs' },
+  { icon: '🔬', title: 'Inspection report', cat: 'docs' },
+  { icon: '📄', title: 'Commercial invoice', cat: 'docs' },
+  { icon: '📦', title: 'Packing list', cat: 'docs' },
+  { icon: '🏦', title: 'Issuing bank DLC', cat: 'trade' },
+  { icon: '🤝', title: 'Advising bank DLC', cat: 'trade' },
+  { icon: '💰', title: 'Confirmed DLC', cat: 'trade' },
+  { icon: '⏱️', title: 'Time-limited DLC', cat: 'trade' },
+  { icon: '🔁', title: 'Transferable DLC', cat: 'trade' },
+  { icon: '🌍', title: 'SWIFT MT 700', cat: 'payments' },
+  { icon: '🇨🇳', title: 'CIPS LC (China)', cat: 'payments' },
+  { icon: '🇪🇺', title: 'SEPA euro settlement', cat: 'payments' },
+  { icon: '🇺🇸', title: 'Fedwire / CHIPS', cat: 'payments' },
+  { icon: '🇮🇳', title: 'UPI trade settlement', cat: 'payments' },
+  { icon: '🇧🇷', title: 'PIX trade settlement', cat: 'payments' },
+  { icon: '✅', title: 'UCP 600 compliance', cat: 'compliance' },
+  { icon: '🔒', title: 'KYC / AML checks', cat: 'compliance' },
+  { icon: '📊', title: 'Sanctions screening', cat: 'compliance' },
+  { icon: '📝', title: 'eUCP digital docs', cat: 'compliance' }
+];
+
+const grid = document.getElementById('fintechGrid');
+function render(category) {
+  if (!category) category = 'all';
+  grid.innerHTML = '';
+  const filtered = category === 'all' ? ideas : ideas.filter(i => i.cat === category);
+  filtered.forEach(idea => {
+    const card = document.createElement('div');
+    card.className = 'fintech-card';
+    card.innerHTML = '<div class="fc-icon">' + idea.icon + '</div><div class="fc-title">' + idea.title + '</div><div class="fc-cat">' + idea.cat + '</div>';
+    grid.appendChild(card);
+  });
+}
+render('all');
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    render(this.dataset.cat);
+  });
+});
+</script>
+<script src="counter.js"></script>
+<script src="ai-agent.js"></script>
+</body>
+</html>
